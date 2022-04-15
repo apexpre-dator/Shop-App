@@ -35,7 +35,9 @@ class _ProductsOverViewScreenState extends State<ProductsOverViewScreen> {
                 }
               });
             },
-            icon: Icon(Icons.more_vert),
+            icon: const Icon(
+              Icons.more_vert,
+            ),
             itemBuilder: (_) => [
               PopupMenuItem(
                 child: Text('Only Favourites'),
@@ -56,7 +58,7 @@ class _ProductsOverViewScreenState extends State<ProductsOverViewScreen> {
               onPressed: () {
                 Navigator.of(context).pushNamed(CartScreen.routeName);
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.shopping_cart_rounded,
               ),
             ),

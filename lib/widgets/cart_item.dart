@@ -22,14 +22,14 @@ class CartItem extends StatelessWidget {
       key: ValueKey(id),
       background: Container(
         color: Theme.of(context).errorColor,
-        child: Icon(
+        child: const Icon(
           Icons.delete,
           color: Colors.white,
           size: 35,
         ),
         alignment: Alignment.centerLeft,
-        padding: EdgeInsets.only(left: 20),
-        margin: EdgeInsets.symmetric(
+        padding: const EdgeInsets.only(left: 20),
+        margin: const EdgeInsets.symmetric(
           horizontal: 15,
           vertical: 5,
         ),
@@ -39,7 +39,7 @@ class CartItem extends StatelessWidget {
         Provider.of<Cart>(context, listen: false).removeItem(productId);
       },
       child: Card(
-        margin: EdgeInsets.symmetric(
+        margin: const EdgeInsets.symmetric(
           horizontal: 15,
           vertical: 5,
         ),

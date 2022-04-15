@@ -33,7 +33,7 @@ class ProductDetailScreen extends StatelessWidget {
             ),
             Text(
               '\$${loadedProduct.price}',
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.grey,
                 fontSize: 20,
               ),
@@ -42,7 +42,7 @@ class ProductDetailScreen extends StatelessWidget {
               height: 10,
             ),
             Container(
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 10,
               ),
               width: double.infinity,
@@ -50,7 +50,7 @@ class ProductDetailScreen extends StatelessWidget {
                 loadedProduct.description,
                 textAlign: TextAlign.center,
                 softWrap: true,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16,
                 ),
               ),

@@ -20,7 +20,7 @@ class _OrderItemState extends State<OrderItem> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       child: Column(
         children: <Widget>[
           ListTile(
@@ -39,7 +39,7 @@ class _OrderItemState extends State<OrderItem> {
           ),
           if (_expanded)
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               height: min(widget.order.products.length * 20.0 + 10, 150),
               child: ListView(
                 children: widget.order.products
@@ -49,7 +49,7 @@ class _OrderItemState extends State<OrderItem> {
                         children: <Widget>[
                           Text(
                             prod.title,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                             ),

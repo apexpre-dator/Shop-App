@@ -33,7 +33,7 @@ class UserProductsScreen extends StatelessWidget {
           ),
         ],
       ),
-      drawer: AppDrawer(),
+      drawer: const AppDrawer(),
       body: RefreshIndicator(
         onRefresh: () => _refreshProducts(context),
         child: Padding(

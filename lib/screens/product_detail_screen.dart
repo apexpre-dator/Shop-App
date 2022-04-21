@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import '../providers/products.dart';
 
 class ProductDetailScreen extends StatelessWidget {
+  const ProductDetailScreen({Key? key}) : super(key: key);
+
   static const routeName = '/product-detail';
 
   @override
@@ -20,7 +22,7 @@ class ProductDetailScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
+            SizedBox(
               height: 300,
               width: double.infinity,
               child: Image.network(
@@ -28,7 +30,7 @@ class ProductDetailScreen extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Text(
@@ -38,7 +40,7 @@ class ProductDetailScreen extends StatelessWidget {
                 fontSize: 20,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(

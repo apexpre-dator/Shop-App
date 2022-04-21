@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,6 +16,8 @@ enum FilterOptions {
 }
 
 class ProductsOverViewScreen extends StatefulWidget {
+  const ProductsOverViewScreen({Key? key}) : super(key: key);
+
   @override
   State<ProductsOverViewScreen> createState() => _ProductsOverViewScreenState();
 }
@@ -85,7 +89,7 @@ class _ProductsOverViewScreenState extends State<ProductsOverViewScreen> {
           ),
         ],
       ),
-      drawer: AppDrawer(),
+      drawer: const AppDrawer(),
       body: _isLoading
           ? const Center(
               child: CircularProgressIndicator(),

@@ -6,6 +6,8 @@ import '../widgets/cart_item.dart';
 import '../providers/orders.dart';
 
 class CartScreen extends StatelessWidget {
+  const CartScreen({Key? key}) : super(key: key);
+
   static const routeName = '/cart';
 
   @override
@@ -98,7 +100,9 @@ class _OrderButtonState extends State<OrderButton> {
               });
               widget.cart.clearCart();
             },
-      child: _isLoading ? CircularProgressIndicator() : Text('ORDER NOW'),
+      child: _isLoading
+          ? const CircularProgressIndicator()
+          : const Text('ORDER NOW'),
       style: ButtonStyle(
         foregroundColor:
             MaterialStateProperty.all(Theme.of(context).primaryColor),

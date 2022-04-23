@@ -53,9 +53,11 @@ class Products with ChangeNotifier {
     return _items.where((prod) => prod.isFavourite).toList();
   }
 
-  Future<void> fetchProducts() async {
+  Future<void> fetchProducts([bool filterByUser = false]) async {
+    final filterData =
+        filterByUser ? 'orderBy="creatorId"&equalTo="$userId"' : '';
     var url = Uri.parse(
-        'https://shop-app-f8428-default-rtdb.asia-southeast1.firebasedatabase.app/products.json?auth=$authToken');
+        'https://shop-app-f8428-default-rtdb.asia-southeast1.firebasedatabase.app/products.json?auth=$authToken&$filterData');
     try {
       final response = await http.get(url);
       if (jsonDecode(response.body) == null) {
@@ -99,6 +101,7 @@ class Products with ChangeNotifier {
           'description': product.description,
           'imageUrl': product.imageUrl,
           'price': product.price,
+          'creatorId': userId,
         }),
       );
       final newProduct = Product(

@@ -41,9 +41,9 @@ class Products with ChangeNotifier {
           'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Cast-Iron-Pan.jpg/1024px-Cast-Iron-Pan.jpg',
     ),*/
   ];
-  final String? authToken;
+  final String? authToken, userId;
 
-  Products(this.authToken, this._items);
+  Products(this.authToken, this.userId, this._items);
 
   List<Product> get items {
     return [..._items];
@@ -54,7 +54,7 @@ class Products with ChangeNotifier {
   }
 
   Future<void> fetchProducts() async {
-    final url = Uri.parse(
+    var url = Uri.parse(
         'https://shop-app-f8428-default-rtdb.asia-southeast1.firebasedatabase.app/products.json?auth=$authToken');
     try {
       final response = await http.get(url);
@@ -62,6 +62,10 @@ class Products with ChangeNotifier {
         return;
       }
       final extractedData = json.decode(response.body) as Map<String, dynamic>;
+      url = Uri.parse(
+          'https://shop-app-f8428-default-rtdb.asia-southeast1.firebasedatabase.app/userFavourites/$userId.json?auth=$authToken');
+      final favouriteResponse = await http.get(url);
+      final favouriteData = json.decode(favouriteResponse.body);
       final List<Product> loadedProducts = [];
       extractedData.forEach((prodId, prodData) {
         loadedProducts.insert(
@@ -72,7 +76,8 @@ class Products with ChangeNotifier {
             description: prodData['description'],
             imageUrl: prodData['imageUrl'],
             price: prodData['price'],
-            isFavourite: prodData['isFavourite'],
+            isFavourite:
+                favouriteData == null ? false : favouriteData[prodId] ?? false,
           ),
         );
       });
@@ -94,7 +99,6 @@ class Products with ChangeNotifier {
           'description': product.description,
           'imageUrl': product.imageUrl,
           'price': product.price,
-          'isFavourite': product.isFavourite,
         }),
       );
       final newProduct = Product(

@@ -17,12 +17,12 @@ class Product with ChangeNotifier {
     this.isFavourite = false,
   });
 
-  Future<void> toggleFavourite() async {
+  Future<void> toggleFavourite(String token) async {
     final prev = isFavourite;
     isFavourite = !isFavourite;
     notifyListeners();
     final url = Uri.parse(
-        'https://shop-app-f8428-default-rtdb.asia-southeast1.firebasedatabase.app/products/$id.json');
+        'https://shop-app-f8428-default-rtdb.asia-southeast1.firebasedatabase.app/products/$id.json?auth=$token');
     try {
       final response = await http.patch(
         url,

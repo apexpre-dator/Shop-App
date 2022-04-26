@@ -24,11 +24,14 @@ class ProductItem extends StatelessWidget {
               arguments: prod.id,
             );
           },
-          child: FadeInImage(
-            placeholder:
-                const AssetImage('assets/images/product-placeholder.png'),
-            image: NetworkImage(prod.imageUrl),
-            fit: BoxFit.cover,
+          child: Hero(
+            tag: prod.id,
+            child: FadeInImage(
+              placeholder:
+                  const AssetImage('assets/images/product-placeholder.png'),
+              image: NetworkImage(prod.imageUrl),
+              fit: BoxFit.cover,
+            ),
           ),
         ),
         footer: GridTileBar(
